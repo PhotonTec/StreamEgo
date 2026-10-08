@@ -20,7 +20,7 @@ To add the arXiv link later, replace the disabled `#arxiv-button` in `dist/index
 
 ## Figures
 
-The webpage displays **SVG vectors converted directly from the original PDFs**, preserving the vector paths and glyphs. Embedded photographs retain the source PDF's raster content. Each figure opens its original PDF for full-size viewing.
+The webpage displays **SVG vectors converted from the supplied PDFs**, preserving the vector paths and glyphs. Embedded photographs retain the source PDF's raster content. Each figure opens its PDF for full-size viewing. The teaser's six H/S/U math labels were exported by WPS as small raster images; these are replaced in both formats with calligraphic vector outlines derived from KaTeX Caligraphic Regular, keeping the original positions and sizes. Displaying them requires no installed math fonts.
 
 To regenerate the figures:
 
@@ -28,7 +28,7 @@ To regenerate the figures:
 python3 prepare_vectors.py /path/to/paper/figures
 ```
 
-This requires `pdf2svg`. It exports the teaser, teacher, student, and inference timeline figures. The VAE decoding device in the timing table is **H100**, corrected by the authors.
+This requires `pdf2svg` and PyMuPDF (`pip install pymupdf`). It repairs the teaser math labels and exports the teaser, teacher, student, and inference timeline figures. The VAE decoding device in the timing table is **H100**, corrected by the authors.
 
 ## Video examples
 

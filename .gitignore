@@ -9,6 +9,8 @@
 !serve.py
 !prepare_gallery.py
 !prepare_vectors.py
+!repair_teaser_math.py
+!teaser_math_paths.json
 !.github/workflows/pages.yml
 !dist/index.html
 !dist/styles.css
