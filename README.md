@@ -2,7 +2,7 @@
 
 Academic project page for **StreamEgo: Streaming Exocentric-to-Egocentric Video Generation**, following the [VGGT](https://vgg-t.github.io/) project-page template.
 
-The page contains the paper teaser, abstract, Teacher / Student method diagrams, an inference pipeline with timing details, three continuous generation examples, and all seven qualitative comparisons. Authors and numbered affiliations appear above the figures. The arXiv button is marked **coming soon** until the manuscript URL is available.
+The page starts with three continuous generation examples, followed by the paper teaser, abstract, Teacher / Student method diagrams, an inference pipeline with timing details, and all seven qualitative comparisons. Authors and numbered affiliations appear above the figures. The arXiv button is marked **coming soon** until the manuscript URL is available.
 
 ## Local preview
 
@@ -20,7 +20,7 @@ To add the arXiv link later, replace the disabled `#arxiv-button` in `dist/index
 
 ## Figures
 
-The webpage displays **SVG vectors converted from the supplied PDFs**, preserving the vector paths and glyphs. Embedded photographs retain the source PDF's raster content. Each figure opens its PDF for full-size viewing. The teaser's six H/S/U math labels were exported by WPS as small raster images; these are replaced in both formats with calligraphic vector outlines derived from KaTeX Caligraphic Regular, keeping the original positions and sizes. Displaying them requires no installed math fonts.
+The webpage displays **SVG vectors converted from the supplied PDFs**, preserving the vector paths and glyphs. Embedded photographs retain the source PDF's raster content. Each figure opens its PDF for full-size viewing. The teaser's six H/S/U math labels were exported by WPS as small raster images; these are replaced in both formats with calligraphic vector outlines derived from KaTeX Caligraphic Regular, keeping the original positions and sizes. Displaying them requires no installed math fonts. Embedded image soft masks are merged losslessly into native PNG alpha channels to avoid SVG filter and mask artifacts in browsers; the vector paths remain intact.
 
 To regenerate the figures:
 
@@ -28,7 +28,7 @@ To regenerate the figures:
 python3 prepare_vectors.py /path/to/paper/figures
 ```
 
-This requires `pdf2svg` and PyMuPDF (`pip install pymupdf`). It repairs the teaser math labels and exports the teaser, teacher, student, and inference timeline figures. The VAE decoding device in the timing table is **H100**, corrected by the authors.
+This requires `pdf2svg`, PyMuPDF and Pillow (`pip install pymupdf Pillow`). It repairs the teaser math labels and exports the teaser, teacher, student, and inference timeline figures. The VAE decoding device in the timing table is **H100**, corrected by the authors.
 
 ## Video examples
 

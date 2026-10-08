@@ -5,7 +5,7 @@ const methodInfo={
 function selectMethod(button){
  const key=button.dataset.method;
  document.querySelectorAll('[data-method]').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});
- const image=document.querySelector('#method-image');image.src=`assets/${key}.svg`;image.alt=methodInfo[key].alt;
+ const image=document.querySelector('#method-image');image.src=`assets/${key}.svg?v=rgba-v1`;image.alt=methodInfo[key].alt;
  document.querySelector('#method-image-link').href=`assets/${key}.pdf`;
  document.querySelector('#method-caption').textContent=methodInfo[key].caption;
  document.querySelector('#method-panel').setAttribute('aria-labelledby',button.id);

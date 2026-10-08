@@ -10,6 +10,7 @@
 !prepare_gallery.py
 !prepare_vectors.py
 !repair_teaser_math.py
+!normalize_svg_images.py
 !teaser_math_paths.json
 !.github/workflows/pages.yml
 !dist/index.html
