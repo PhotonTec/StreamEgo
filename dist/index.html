@@ -7,7 +7,7 @@
 <title>StreamEgo: Streaming Exocentric-to-Egocentric Video Generation</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23363636'/%3E%3Ctext x='16' y='24' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="bulma.min.css">
-<link rel="stylesheet" href="styles.css?v=video-first">
+<link rel="stylesheet" href="styles.css?v=abstract-teaser">
 <script src="app.js?v=video-first-rgba" defer></script>
 </head>
 <body>
@@ -48,13 +48,12 @@
 <button class="scene-thumbnail" data-visualization="objects" aria-pressed="false"><img src="assets/visualization-thumb-objects.jpg" alt="Handling a camera scene" width="180" height="104"><span>Object handling · 10 s</span></button>
 </div></section>
 </div></div></div></section>
-<section class="hero teaser"><div class="container is-max-desktop"><div class="hero-body">
-<figure><a href="assets/teaser.pdf?v=vector-math" target="_blank" rel="noopener" aria-label="View the full-size teaser figure"><img id="teaser-image" src="assets/teaser.svg?v=rgba-v1" alt="Paper teaser: hand-object interaction, shared-view, and unseen-view regions; comparison of EgoX and StreamEgo's streaming first-person generation." width="1100" height="510"></a></figure>
-</div></div></section>
+
 <section class="section publication-body"><div class="container is-max-desktop"><div class="columns is-centered"><div class="column is-full-width">
 <section id="abstract" class="paper-section">
 <h2 class="title is-4 has-text-centered">Abstract</h2>
 <div class="content has-text-justified"><p>Exocentric-to-egocentric (Exo2Ego) video generation transforms third-person recordings into first-person viewpoints, unlocking immersive AR/VR experiences and scalable demonstration synthesis for embodied robotics. Extending it to a streaming setting is expected to further enable live applications. However, existing methods suffer from degraded manipulation regions, overfitting and confinement to fixed-length clips with prohibitive latency. To address these limitations, we present <b>StreamEgo</b>, a real-time framework for unbounded, generalizable Exo2Ego video generation. To resolve intricate manipulation dynamics while supporting the streaming pipeline, a streaming dual-branch prior provides pixel-aligned guidance for translating appearance and skeletal kinematics. We also introduce a region-aware loss curriculum to improve generalization and stabilize multi-objective diffusion training. Furthermore, we distill the model into a chunk-wise autoregressive model, augmented with a region-aware corruption mechanism and a first-chunk curriculum, enabling high-quality, generalizable real-time streaming Exo2Ego generation at <b>24.3 FPS on a single H100 GPU</b>.</p></div>
+<figure class="teaser-figure"><a href="assets/teaser.pdf?v=vector-math" target="_blank" rel="noopener" aria-label="View the full-size teaser figure"><img id="teaser-image" src="assets/teaser.svg?v=rgba-v1" alt="Paper teaser: hand-object interaction, shared-view, and unseen-view regions; comparison of EgoX and StreamEgo's streaming first-person generation." width="1100" height="510"></a></figure>
 </section>
 <section id="method" class="paper-section">
 <h2 class="title is-4 has-text-centered">Method</h2>

@@ -2,7 +2,7 @@
 
 Academic project page for **StreamEgo: Streaming Exocentric-to-Egocentric Video Generation**, following the [VGGT](https://vgg-t.github.io/) project-page template.
 
-The page starts with three continuous generation examples, followed by the paper teaser, abstract, Teacher / Student method diagrams, an inference pipeline with timing details, and all seven qualitative comparisons. Authors and numbered affiliations appear above the figures. The arXiv button is marked **coming soon** until the manuscript URL is available.
+The page starts with three continuous generation examples, followed by the abstract, paper teaser, Teacher / Student method diagrams, an inference pipeline with timing details, and all seven qualitative comparisons. Authors and numbered affiliations appear above the figures. The arXiv button is marked **coming soon** until the manuscript URL is available.
 
 ## Local preview
 
