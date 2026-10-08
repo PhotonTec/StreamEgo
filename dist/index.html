@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="StreamEgo: Streaming Exocentric-to-Egocentric Video Generation. Continuous first-person video generation with streaming dual-branch priors and a region-aware autoregressive model.">
+<title>StreamEgo: Streaming Exocentric-to-Egocentric Video Generation</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23363636'/%3E%3Ctext x='16' y='24' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="bulma.min.css">
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#abstract">Skip to content</a>
+<section class="hero publication-header"><div class="hero-body"><div class="container is-max-desktop"><div class="columns is-centered"><div class="column has-text-centered">
+<h1 class="title is-4 publication-title">StreamEgo: Streaming Exocentric-to-Egocentric Video Generation</h1>
+<div class="is-size-5 publication-authors">
+<div class="author-row">
+<span class="author-block"><span class="author-name">Tianyi Xu</span><sup>1, 2, *</sup>,</span>
+<span class="author-block"><span class="author-name">Boyang Lyu</span><sup>1, 2, *</sup>,</span>
+<span class="author-block"><span class="author-name">Yunkai Tang</span><sup>1, 2</sup>,</span>
+<span class="author-block"><span class="author-name">Kairan Ding</span><sup>1, 2</sup>,</span>
+<span class="author-block"><span class="author-name">Jiahang Li</span><sup>1, 2</sup></span>
+</div>
+<div class="author-row">
+<span class="author-block"><span class="author-name">Weiyu Guo</span><sup>2</sup>,</span>
+<span class="author-block"><span class="author-name">Yandong Guo</span><sup>2</sup>,</span>
+<span class="author-block"><span class="author-name">Shuchen Weng</span><sup>3, 1, †</sup>,</span>
+<span class="author-block"><span class="author-name">Boxin Shi</span><sup>1, †</sup></span>
+</div></div>
+<div class="is-size-5 publication-authors affiliations">
+<span class="author-block"><sup>1</sup><a href="https://english.pku.edu.cn/about.html" target="_blank" rel="noopener">Peking University</a>,</span>
+<span class="author-block"><sup>2</sup><a href="https://ai2robotics.com/en/about/" target="_blank" rel="noopener">AI² Robotics</a>,</span>
+<span class="author-block"><sup>3</sup><a href="https://www.baai.ac.cn/en/about-us" target="_blank" rel="noopener">Beijing Academy of Artificial Intelligence (BAAI)</a></span>
+</div>
+<p class="contribution-note">* Equal contribution. &nbsp;&nbsp; † Corresponding authors.</p>
+<div class="publication-links"><button id="arxiv-button" class="button is-normal is-rounded is-dark" type="button" disabled title="The arXiv link will be added when available" aria-label="arXiv (coming soon)">arXiv <span class="arxiv-status">(coming soon)</span></button></div>
+</div></div></div></div></section>
+<main>
+<section class="hero teaser"><div class="container is-max-desktop"><div class="hero-body">
+<figure><a href="assets/teaser.pdf" target="_blank" rel="noopener" aria-label="View the full-size teaser figure"><img id="teaser-image" src="assets/teaser.svg" alt="Paper teaser: hand-object interaction, shared-view, and unseen-view regions; comparison of EgoX and StreamEgo's streaming first-person generation." width="1100" height="510"></a></figure>
+</div></div></section>
+<section class="section publication-body"><div class="container is-max-desktop"><div class="columns is-centered"><div class="column is-full-width">
+<section id="abstract" class="paper-section">
+<h2 class="title is-4 has-text-centered">Abstract</h2>
+<div class="content has-text-justified"><p>Exocentric-to-egocentric (Exo2Ego) video generation transforms third-person recordings into first-person viewpoints, unlocking immersive AR/VR experiences and scalable demonstration synthesis for embodied robotics. Extending it to a streaming setting is expected to further enable live applications. However, existing methods suffer from degraded manipulation regions, overfitting and confinement to fixed-length clips with prohibitive latency. To address these limitations, we present <b>StreamEgo</b>, a real-time framework for unbounded, generalizable Exo2Ego video generation. To resolve intricate manipulation dynamics while supporting the streaming pipeline, a streaming dual-branch prior provides pixel-aligned guidance for translating appearance and skeletal kinematics. We also introduce a region-aware loss curriculum to improve generalization and stabilize multi-objective diffusion training. Furthermore, we distill the model into a chunk-wise autoregressive model, augmented with a region-aware corruption mechanism and a first-chunk curriculum, enabling high-quality, generalizable real-time streaming Exo2Ego generation at <b>24.3 FPS on a single H100 GPU</b>.</p></div>
+</section>
+<section id="method" class="paper-section">
+<h2 class="title is-4 has-text-centered">Method</h2>
+<div class="content has-text-justified"><p>StreamEgo combines streaming appearance and human pose priors with region-aware training to preserve scene structure and hand–object interactions. We first train a bidirectional teacher, then distill it into a three-step, chunk-wise autoregressive student for continuous generation.</p></div>
+<div class="tabs is-centered method-tabs" role="tablist" aria-label="Method">
+<button id="teacher-tab" class="is-active" role="tab" aria-selected="true" aria-controls="method-panel" data-method="teacher">Teacher</button>
+<button id="student-tab" role="tab" aria-selected="false" aria-controls="method-panel" tabindex="-1" data-method="student">Student</button>
+</div>
+<div id="method-panel" role="tabpanel" aria-labelledby="teacher-tab"><figure class="method-figure"><a id="method-image-link" href="assets/teacher.pdf" target="_blank" rel="noopener" aria-label="View the full-size method figure"><img id="method-image" src="assets/teacher.svg" width="1400" height="500" alt="Streaming dual-branch priors and the bidirectional teacher with a region-aware training curriculum."></a><figcaption id="method-caption">The teacher uses streaming dynamic ego and body-guided human pose priors as pixel-aligned conditions. A region-aware curriculum balances shared appearance, unseen context, and hand–object interactions.</figcaption></figure></div>
+</section>
+<section id="inference-pipeline" class="paper-section">
+<h2 class="title is-4 has-text-centered">Inference Pipeline</h2>
+<div class="content has-text-justified"><p>Each input chunk contains <b>33 frames at 24 FPS (1.375 seconds)</b>. For chunk <i>k</i>, the system builds the dual-branch priors and encodes the input and priors, while a VLM produces the action prompt in parallel. During chunk <i>k</i> + 1, the student denoises the prepared latents in three steps; during chunk <i>k</i> + 2, the VAE decodes them into first-person RGB frames. These stages overlap across successive chunks, producing a <b>two-chunk streaming delay of 2.75 seconds</b> and one output chunk per incoming chunk in steady state.</p></div>
+<figure class="pipeline-figure"><a href="assets/inference-pipeline.pdf" target="_blank" rel="noopener" aria-label="View the full-size inference pipeline"><img src="assets/inference-pipeline.svg" alt="Supplementary inference pipeline: chunk-wise prior preparation, denoising, and VAE decoding overlap; output is delayed by two chunks, or 2.75 seconds." width="2200" height="760" loading="lazy"></a></figure>
+<div class="content stage-costs"><div class="table-container"><table class="table is-fullwidth" aria-label="Per-chunk inference stage timings"><thead><tr><th>Stage</th><th>Device</th><th>Time per chunk</th></tr></thead><tbody><tr><td>Streaming dual-branch priors</td><td>H100</td><td>0.58 s</td></tr><tr><td>VAE encoding of input and priors</td><td>H100</td><td>0.30 s</td></tr><tr><td>VLM action prompt (parallel)</td><td>H100</td><td>0.23 s</td></tr><tr><td>Student denoising (3 steps)</td><td>H100</td><td>1.36 s</td></tr><tr><td>VAE decoding</td><td>H100</td><td>0.91 s</td></tr></tbody></table></div><p>The per-chunk critical path is <b>0.58 + 0.30 + 1.36 + 0.91 = 3.15 s</b>, with the VLM cost hidden by parallel execution. Pipelining overlaps preparation (0.88 s), denoising (1.36 s), and decoding (0.91 s) across chunks; each stage fits within the 1.375-second chunk interval. The <b>24.3 FPS</b> figure measures generation throughput, while <b>2.75 s</b> describes the pipeline's two-chunk delay. Timings exclude one-time model loading.</p></div>
+</section>
+<section id="qualitative-visualization" class="paper-section">
+<h2 class="title is-4 has-text-centered">Qualitative Visualization</h2>
+<div class="content has-text-centered"><p>Continuous first-person generation on Ego-Exo4D and H2O.<br>Click a scene below to play its complete 30-second or 10-second sequence.</p></div>
+<figure class="video-gallery"><video id="visualization-video" src="assets/visualization-cooking.mp4" poster="assets/visualization-cooking.jpg" width="1440" height="480" muted loop playsinline controls preload="metadata" aria-label="Cooking: exocentric input, StreamEgo generation, and ground truth"></video><figcaption id="visualization-caption">Cooking · Ego-Exo4D · 30 seconds</figcaption></figure>
+<div class="thumbnail-container" aria-label="Choose a continuous video scene">
+<button class="scene-thumbnail thumbnail-selected" data-visualization="cooking" aria-pressed="true"><img src="assets/visualization-thumb-cooking.jpg" alt="Cooking scene" width="180" height="104"><span>Cooking · 30 s</span></button>
+<button class="scene-thumbnail" data-visualization="piano" aria-pressed="false"><img src="assets/visualization-thumb-piano.jpg" alt="Playing piano scene" width="180" height="104"><span>Piano · 30 s</span></button>
+<button class="scene-thumbnail" data-visualization="objects" aria-pressed="false"><img src="assets/visualization-thumb-objects.jpg" alt="Handling a camera scene" width="180" height="104"><span>Object handling · 10 s</span></button>
+</div></section>
+<section id="qualitative-comparison" class="paper-section">
+<h2 class="title is-4 has-text-centered">Qualitative Comparison</h2>
+<div class="content has-text-justified"><p>Comparison with <b>EgoX</b>, <b>Vista4D</b>, and <b>Wan-VACE</b> on Ego-Exo4D, H2O, and Assembly101. Each example shows the exocentric input, our streaming generation, and ground truth in the top row, with the three baselines below. Click a thumbnail to switch scenes.</p></div>
+<figure class="video-gallery"><video id="comparison-video" src="assets/comparison-h2o.mp4" poster="assets/comparison-h2o.jpg" width="1440" height="960" muted loop playsinline controls preload="metadata" aria-label="Book interaction comparison: input, StreamEgo, ground truth, EgoX, Vista4D, and Wan-VACE"></video><figcaption id="comparison-caption">Book interaction · H2O</figcaption></figure>
+<div class="thumbnail-container comparison-thumbnails" aria-label="Choose a comparison scene">
+<button class="scene-thumbnail thumbnail-selected" data-comparison="h2o" aria-pressed="true"><img src="assets/comparison-thumb-h2o.jpg" alt="Book interaction scene" width="180" height="104"><span>Book interaction</span></button>
+<button class="scene-thumbnail" data-comparison="bicycle" aria-pressed="false"><img src="assets/comparison-thumb-bicycle.jpg" alt="Bicycle repair scene" width="180" height="104"><span>Bicycle repair</span></button>
+<button class="scene-thumbnail" data-comparison="assembly" aria-pressed="false"><img src="assets/comparison-thumb-assembly.jpg" alt="Toy assembly scene" width="180" height="104"><span>Toy assembly</span></button>
+<button class="scene-thumbnail" data-comparison="cpr" aria-pressed="false"><img src="assets/comparison-thumb-cpr.jpg" alt="CPR practice scene" width="180" height="104"><span>CPR practice</span></button>
+<button class="scene-thumbnail" data-comparison="h2o2" aria-pressed="false"><img src="assets/comparison-thumb-h2o2.jpg" alt="Device interaction scene" width="180" height="104"><span>Device interaction</span></button>
+<button class="scene-thumbnail" data-comparison="reading" aria-pressed="false"><img src="assets/comparison-thumb-reading.jpg" alt="Reading scene" width="180" height="104"><span>Reading</span></button>
+<button class="scene-thumbnail" data-comparison="cooking" aria-pressed="false"><img src="assets/comparison-thumb-cooking.jpg" alt="Cooking comparison scene" width="180" height="104"><span>Cooking</span></button>
+</div></section>
+</div></div></div></section>
+</main>
+<footer class="template-credit"><p>Website template adapted from <a href="https://vgg-t.github.io/" target="_blank" rel="noopener">VGGT</a> and <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>, under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p></footer>
+</body></html>
